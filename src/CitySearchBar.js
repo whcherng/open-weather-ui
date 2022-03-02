@@ -1,4 +1,5 @@
-import { Button, TextField } from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
+import { Box } from "@mui/system";
 import axios from "axios";
 import { useState } from "react";
 
@@ -60,36 +61,44 @@ const CitySearchBar = (props) => {
   };
 
   return (
-    <>
-      <TextField
-        id="outlined-basic"
-        label="City"
-        variant="outlined"
-        value={city}
-        onChange={handleCityTextChange}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Country"
-        variant="outlined"
-        value={country}
-        onChange={handleCountryTextChange}
-      />
-      <Button
-        disabled={loading || (city === "" && country === "")}
-        variant="contained"
-        onClick={searchNow}
-      >
-        Search
-      </Button>
-      <Button
-        disabled={loading || (city === "" && country === "")}
-        variant="text"
-        onClick={clearText}
-      >
-        Clear
-      </Button>
-    </>
+    <Grid container spacing={2} alignItems="center">
+      <Grid item xs={12} md={4} lg={4}>
+        <TextField
+          id="outlined-basic"
+          label="City"
+          variant="outlined"
+          value={city}
+          onChange={handleCityTextChange}
+        />
+      </Grid>
+      <Grid item xs={12} md={8} lg={4}>
+        <TextField
+          id="outlined-basic"
+          label="Country"
+          variant="outlined"
+          value={country}
+          onChange={handleCountryTextChange}
+        />
+      </Grid>
+      <Grid item xs={12} md={2} lg={2}>
+        <Button
+          disabled={loading || (city === "" && country === "")}
+          variant="contained"
+          onClick={searchNow}
+        >
+          Search
+        </Button>
+      </Grid>
+      <Grid item xs={12} md={10} lg={2}>
+        <Button
+          disabled={loading || (city === "" && country === "")}
+          variant="text"
+          onClick={clearText}
+        >
+          Clear
+        </Button>
+      </Grid>
+    </Grid>
   );
 };
 
