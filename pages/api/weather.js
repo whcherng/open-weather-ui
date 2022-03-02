@@ -33,7 +33,7 @@ export default function handler(req, res) {
 
       const { cod } = weatherResponse.data;
       if (cod === 200) {
-        const { main, weather, name, sys, dt } = weatherResponse.data;
+        const { main, weather, name, sys, dt, coord } = weatherResponse.data;
         const weatherData = {
           ...main,
           title: weather[0].main,
@@ -41,6 +41,7 @@ export default function handler(req, res) {
           city: name,
           country: sys.country,
           datetime: dt,
+          ...coord,
         };
         res.status(weatherResponse.status).json(weatherData);
       } else {
